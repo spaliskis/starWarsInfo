@@ -35,9 +35,9 @@ const PeopleTable = ({ episode_id }: { episode_id: number }) => {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Height</th>
-            <th>Mass</th>
             <th>Gender</th>
+            <th>Birth year</th>
+            <th>Mass</th>
           </tr>
         </thead>
         <tbody>
