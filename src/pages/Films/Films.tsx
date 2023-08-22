@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilms } from "../../features/filmsSlice";
 import { RootState } from "../../store";
+import { FaSpinner } from "react-icons/fa";
 
 const Films = () => {
   const dispatch = useDispatch();
@@ -25,19 +26,35 @@ const Films = () => {
 
   const [selectedFilmID, setSelectedFilmID] = useState<number>(0);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="flex flex-col items-center justify-center h-full m-auto">
+        <FaSpinner className="animate-spin text-gray-900 text-5xl" />
+        <p className="text-gray-500 text-lg">Loading films...</p>
+      </div>
+    );
   if (isError) return <div>Something went wrong</div>;
 
   return (
-    <div>
-      {films?.map((film) => (
-        <FilmCard
-          key={film.episode_id}
-          film={film}
-          setSelectedFilmID={() => setSelectedFilmID(film.episode_id)}
-        />
-      ))}
-      <PeopleTable episode_id={selectedFilmID} />
+    <div className="flex flex-col items-center min-w-full h-full py-6 bg-gray-200">
+      <h2 className="text-2xl font-bold mb-4">Films</h2>
+      <div className="px-4 sm:px-6 lg:px-8 w-full max-w-screen-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {films?.map((film) => (
+            <div key={film.episode_id} className="w-full">
+              <FilmCard
+                film={film}
+                setSelectedFilmID={() => setSelectedFilmID(film.episode_id)}
+              />
+            </div>
+          ))}
+        </div>
+        {selectedFilmID !== 0 && (
+          <div className="mt-4">
+            <PeopleTable episodeId={selectedFilmID} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

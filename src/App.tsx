@@ -6,11 +6,15 @@ import Sidebar from "./layout/Sidebar";
 const App = () => {
   return (
     <Router>
-      <Sidebar />
-      <Routes>
-        <Route path="/about" Component={About} />
-        <Route path="/films" Component={Films} />
-      </Routes>
+      <div className="flex flex-col sm:flex-row min-h-screen">
+        <Sidebar />
+        <div className="flex flex-grow">
+          <Routes>
+            <Route path="/about" Component={About} />
+            <Route path="/films" Component={Films} />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 };
