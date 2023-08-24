@@ -10,8 +10,9 @@ const App = () => {
         <Sidebar />
         <div className="flex flex-grow">
           <Routes>
-            <Route path="/about" Component={About} />
-            <Route path="/films" Component={Films} />
+            <Route path="/" element={<Films />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/films" element={<Films />} />
           </Routes>
         </div>
       </div>

@@ -57,7 +57,7 @@ const PeopleTable = ({ episodeId }: { episodeId: number }) => {
   }
 
   return (
-    <div className="flex flex-col items-center mt-4 w-full">
+    <div className="flex flex-col items-center w-full">
       <h2 className="text-2xl font-bold mb-4">
         People in '{selectedFilm?.title}'
       </h2>

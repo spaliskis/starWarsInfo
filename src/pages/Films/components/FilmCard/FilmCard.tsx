@@ -16,12 +16,14 @@ const FilmCard = ({ film, setSelectedFilmID }: Props) => {
         <div className="text-gray-400 text-sm mb-4">
           Episode ID: {film.episode_id}
         </div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-auto"
-          onClick={() => setSelectedFilmID(film.episode_id)}
-        >
-          Show People
-        </button>
+        <a href="#people-table">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => setSelectedFilmID(film.episode_id)}
+          >
+            Show People
+          </button>
+        </a>
       </div>
     </div>
   );

@@ -64,7 +64,7 @@ const Films = () => {
           ))}
         </div>
         {selectedFilmID !== 0 && (
-          <div className="mt-4">
+          <div id="people-table" className="mt-12">
             <PeopleTable episodeId={selectedFilmID} />
           </div>
         )}
