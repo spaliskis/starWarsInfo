@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
-import axiosInstance from "../../api";
-import { FilmsResponse } from "../../types";
-import FilmCard from "./components/FilmCard";
-import PeopleTable from "./components/PeopleTable";
+import axiosInstance from "../../../../api";
+import { FilmsResponse } from "../../../../types";
+import FilmCard from "../FilmCard/FilmCard";
+import PeopleTable from "../PeopleTable/PeopleTable";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setFilms } from "../../features/filmsSlice";
-import { RootState } from "../../store";
+import { setFilms } from "../../../../features/filmsSlice";
+import { RootState } from "../../../../store";
 import { FaSpinner } from "react-icons/fa";
 
 const Films = () => {
@@ -15,7 +15,11 @@ const Films = () => {
 
   const { data, isLoading, isError } = useQuery("films", async () => {
     const response = await axiosInstance.get<FilmsResponse>("/films");
-    return response.data;
+    if (response) {
+      return response.data;
+    } else {
+      throw new Error("Response is undefined");
+    }
   });
 
   useEffect(() => {
@@ -33,7 +37,17 @@ const Films = () => {
         <p className="text-gray-500 text-lg">Loading films...</p>
       </div>
     );
-  if (isError) return <div>Something went wrong</div>;
+  if (isError)
+    return (
+      <div className="flex items-center justify-center h-full m-auto">
+        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+          <strong className="font-bold">Error: </strong>
+          <span className="block sm:inline">
+            Something went wrong. Please try again later.
+          </span>
+        </div>
+      </div>
+    );
 
   return (
     <div className="flex flex-col items-center min-w-full h-full py-6 bg-gray-200">

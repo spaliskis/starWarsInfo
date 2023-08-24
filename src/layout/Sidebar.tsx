@@ -8,16 +8,16 @@ const Sidebar = () => {
         <span className="text-xl font-bold">Star Wars Info</span>
       </div>
       <ul className="flex sm:flex-col">
-        <li className="py-4 px-6 hover:bg-gray-800">
-          <Link to="/about" className="flex items-center">
+        <li className="py-4 px-6 hover:bg-gray-800 cursor-pointer">
+          <Link to="/about" className="flex items-center w-full h-full">
             <span className="mr-3">
               <FaInfoCircle />
             </span>
             About
           </Link>
         </li>
-        <li className="py-4 px-6 hover:bg-gray-800">
-          <Link to="/films" className="flex items-center">
+        <li className="py-4 px-6 hover:bg-gray-800 cursor-pointer">
+          <Link to="/films" className="flex items-center w-full h-full">
             <span className="mr-3">
               <FaFilm />
             </span>
